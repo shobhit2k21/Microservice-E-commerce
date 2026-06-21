@@ -1,0 +1,40 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: userdb
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+     # MCP configuration
+  ai:
+    mcp:
+      server:
+        name: userMcp
+        version: 0.1.1
+        protocol: streamable
+        stdio: false
+        type: sync
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
